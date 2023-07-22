@@ -7,7 +7,6 @@
         "microphone": "*"
     },
     "files": [
-        "main.ts",
         "README.md",
         "esp8266.ts",
         "blynk.ts"
@@ -16,7 +15,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "6.0.15",
+        "target": "6.0.16",
         "targetId": "microbit"
     },
     "supportedTargets": [

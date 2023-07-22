@@ -239,6 +239,31 @@ namespace esp8266 {
     }
 
 
+    /**
+         * Return the ESP8266 Local IP address.
+         */
+    //% weight=25
+    //% blockGap=8
+    //% blockId=esp8266_get_local_ip_address
+    //% block="get local IP address "
+    export function getLocalIpAddress(): string {
+        // Obtain the Local IP address.
+        let ipAddress = ""
+        let tab_ipAddress:string[] = null
+
+        sendCommand("AT+CIFSR")
+        ipAddress = getResponse("STAIP", 1000)
+
+        // Wait until OK is received.
+        getResponse("OK")
+
+        // Extract Local IP address from string (between "...")   CIFSR:STAIP,<"STAIP">
+        tab_ipAddress = ipAddress.split("\"")
+        return tab_ipAddress[1]
+        
+    }
+
+
 
     /**
      * Connect to WiFi router.
