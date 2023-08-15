@@ -17,6 +17,9 @@ namespace esp8266 {
     // Buffer for data received from UART.
     let rxData = ""
 
+    let pinTx: SerialPin
+    let pinRx: SerialPin
+    let bdr: BaudRate
 
 
     /**
@@ -200,9 +203,9 @@ namespace esp8266 {
     //% baudrate=BaudRate.BaudRate115200
     export function init(tx?: SerialPin, rx?: SerialPin, baudrate?: BaudRate) {
 
-        let pinTx = tx
-        let pinRx = rx
-        let bdr = baudrate
+        pinTx = tx
+        pinRx = rx
+        bdr = baudrate
 
         // Redirect the serial port.
         // serial.redirect(tx, rx, baudrate)
