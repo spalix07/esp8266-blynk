@@ -1,5 +1,5 @@
 /*******************************************************************************
- * MakeCode extension for ESP8266 Wifi module.
+ * MakeCode extension for ESP8266 Wifi module .
  *
  * Company: Cytron Technologies Sdn Bhd
  * Website: http://www.cytron.io

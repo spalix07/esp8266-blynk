@@ -34,7 +34,7 @@ namespace esp8266 {
 
     /**
      * Lit la valeur d'un champ enregistré sur Blynk.
-     * @param authToken : clé d'authentification Blynk.
+     * @param authToken : clé d'authentification Blynk
      * @param pin : champ dont on veut connaître la valeur
      */
     //% subcategory="Blynk"
@@ -108,10 +108,10 @@ namespace esp8266 {
 
 
     /**
-     * Enregistre la valeur d'un champ sur Blynk
-     * @param authToken : clé d'authentification Blynk.
+     * Enregistre la valeur d'un champ sur Blynk.
+     * @param authToken : clé d'authentification Blynk
      * @param pin : champ dont on veut connaître la valeur
-     * @param value : Valeur du champ.
+     * @param value : Valeur du champ
      */
     //% subcategory="Blynk"
     //% weight=28
