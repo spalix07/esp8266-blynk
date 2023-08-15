@@ -173,7 +173,7 @@ namespace esp8266 {
      * Renvoie Vrai (True) si le composant ESP8266 est initialisé.
      */
     //% group=ESP8266
-    //% weight=30
+    //% weight=29
     //% blockGap=8
     //% blockId=esp8266_is_esp8266_initialized
     //% block="[ESP8266] Composant initialisé"
@@ -190,7 +190,7 @@ namespace esp8266 {
      * @param baudrate UART baudrate. eg: BaudRate.BaudRate115200
      */
     //% group=ESP8266
-    //% weight=29
+    //% weight=30
     //% blockGap=40
     //% blockId=esp8266_init
     //% block="[ESP8266] Initialiser || Tx:%tx Rx:%rx Baudrate:%baudrate"
@@ -301,20 +301,7 @@ namespace esp8266 {
         "ny3.blynk.cloud", "sgp1.blynk.cloud", "blr1.blynk.cloud"]
 
 
-    /**
-     * Renvoie vrai si les données envoyées au site Blynk ont été prises en compte.
-     */
-    //% group="Blynk"
-    //% weight=30
-    //% blockGap=8
-    //% blockId=esp8266_is_blynk_data_updated
-    //% block="[Blynk] Mis à jour"
-    export function isBlynkUpdated(): boolean {
-        return blynkUpdated
-    }
-
-
-
+    
     /**
      * Lit la valeur d'un champ enregistré sur Blynk.
      * @param authToken : clé d'authentification Blynk
@@ -463,6 +450,18 @@ namespace esp8266 {
         return
     }
 
+
+    /**
+         * Renvoie vrai si les données envoyées au site Blynk ont été prises en compte.
+         */
+    //% group="Blynk"
+    //% weight=27
+    //% blockGap=8
+    //% blockId=esp8266_is_blynk_data_updated
+    //% block="[Blynk] Mis à jour"
+    export function isBlynkUpdated(): boolean {
+        return blynkUpdated
+    }
 
 
 
