@@ -220,30 +220,7 @@ namespace esp8266 {
 
 
 
-    /**
-     * Renvoie Vrai(true) si le composant ESP8266 est connecté en WiFi au réseau.
-     */
-    //% group=ESP8266
-    //% weight=28
-    //% blockGap=8
-    //% blockId=esp8266_is_wifi_connected
-    //% block="[ESP8266] Connecté au point d'accès WiFi"
-    export function isWifiConnected(): boolean {
-        // Get the connection status.
-        sendCommand("AT+CIPSTATUS")
-        let status = getResponse("STATUS:", 1000)
-
-        // Wait until OK is received.
-        getResponse("OK")
-
-        // Return the WiFi status.
-        if ((status == "") || status.includes("STATUS:5")) {
-            return false
-        }
-        else {
-            return true
-        }
-    }
+  
 
 
     /**
@@ -279,7 +256,7 @@ namespace esp8266 {
      * @param password: Clé WiFi
      */
     //% group=ESP8266
-    //% weight=27
+    //% weight=28
     //% blockGap=8
     //% blockId=esp8266_connect_wifi
     //% block="[ESP8266] Connecter au point d'accès WiFi  Nom(SSID):%ssid Clé:%password"
@@ -289,6 +266,32 @@ namespace esp8266 {
 
         // Connect to WiFi router.
         sendCommand("AT+CWJAP=\"" + ssid + "\",\"" + password + "\"", "OK", 20000)
+    }
+
+
+    /**
+       * Renvoie Vrai(true) si le composant ESP8266 est connecté en WiFi au réseau.
+       */
+    //% group=ESP8266
+    //% weight=27
+    //% blockGap=8
+    //% blockId=esp8266_is_wifi_connected
+    //% block="[ESP8266] Connecté au point d'accès WiFi"
+    export function isWifiConnected(): boolean {
+        // Get the connection status.
+        sendCommand("AT+CIPSTATUS")
+        let status = getResponse("STATUS:", 1000)
+
+        // Wait until OK is received.
+        getResponse("OK")
+
+        // Return the WiFi status.
+        if ((status == "") || status.includes("STATUS:5")) {
+            return false
+        }
+        else {
+            return true
+        }
     }
 
 
