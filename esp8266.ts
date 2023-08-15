@@ -199,8 +199,14 @@ namespace esp8266 {
     //% rx.defl=SerialPin.P12
     //% baudrate=BaudRate.BaudRate115200
     export function init(tx?: SerialPin, rx?: SerialPin, baudrate?: BaudRate) {
+
+        let pinTx = tx
+        let pinRx = rx
+        let bdr = baudrate
+
         // Redirect the serial port.
-        serial.redirect(tx, rx, baudrate)
+        // serial.redirect(tx, rx, baudrate)
+        serial.redirect(pinTx, pinRx, bdr)
         serial.setTxBufferSize(128)
         serial.setRxBufferSize(128)
 
