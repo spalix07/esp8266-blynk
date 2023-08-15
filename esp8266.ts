@@ -170,12 +170,12 @@ namespace esp8266 {
 
 
     /**
-     * Return true if the ESP8266 is already initialized.
+     * Renvoie Vrai (True) si le composant ESP8266 est initialisé.
      */
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_is_esp8266_initialized
-    //% block="ESP8266 initialized"
+    //% block="ESP8266 initialisé"
     export function isESP8266Initialized(): boolean {
         return esp8266Initialized
     }
@@ -183,7 +183,7 @@ namespace esp8266 {
 
 
     /**
-     * Initialize the ESP8266.
+     * Initialise le composant ESP8266 pour la connexion sans fil (WIFI).
      * @param tx Tx pin of micro:bit. eg: SerialPin.P16
      * @param rx Rx pin of micro:bit. eg: SerialPin.P15
      * @param baudrate UART baudrate. eg: BaudRate.BaudRate115200
@@ -191,7 +191,10 @@ namespace esp8266 {
     //% weight=29
     //% blockGap=40
     //% blockId=esp8266_init
-    //% block="initialize ESP8266: Tx %tx Rx %rx Baudrate %baudrate"
+    //% block="[ESP8266] Initialiser || Tx %tx Rx %rx Baudrate %baudrate"
+    //% tx.defl=SerialPin.P8
+    //% rx.defl=SerialPin.P12
+    //% baudrate=BaudRate.BaudRate115200
     export function init(tx: SerialPin, rx: SerialPin, baudrate: BaudRate) {
         // Redirect the serial port.
         serial.redirect(tx, rx, baudrate)
@@ -215,12 +218,12 @@ namespace esp8266 {
 
 
     /**
-     * Return true if the ESP8266 is connected to WiFi router.
+     * Renvoie Vrai(true) si le composant ESP8266 est connecté en WiFi au réseau.
      */
     //% weight=28
     //% blockGap=8
     //% blockId=esp8266_is_wifi_connected
-    //% block="WiFi connected"
+    //% block="[ESP8266] Connecté en WiFi"
     export function isWifiConnected(): boolean {
         // Get the connection status.
         sendCommand("AT+CIPSTATUS")
@@ -240,12 +243,12 @@ namespace esp8266 {
 
 
     /**
-         * Return the ESP8266 Local IP address.
-         */
+    * Renvoie l'adresse IP locale du composant ESP8266.
+    */
     //% weight=25
     //% blockGap=8
     //% blockId=esp8266_get_local_ip_address
-    //% block="get local IP address "
+    //% block="[ESP 8266] Adresse IP locale "
     export function getLocalIpAddress(): string {
         // Obtain the Local IP address.
         let ipAddress = ""
@@ -266,14 +269,14 @@ namespace esp8266 {
 
 
     /**
-     * Connect to WiFi router.
-     * @param ssid Your WiFi SSID.
-     * @param password Your WiFi password.
+     * Connecter le composant ESP8266 à un point d'accès WiFi.
+     * @param ssid: Nom du point d'accès (SSID).
+     * @param password; Clé WiFi.
      */
     //% weight=27
     //% blockGap=8
     //% blockId=esp8266_connect_wifi
-    //% block="connect to WiFi: SSID %ssid Password %password"
+    //% block="[ESP8266] Connecter au point d'accès WiFi  Nom(SSID):%ssid Clé:%password"
     export function connectWiFi(ssid: string, password: string) {
         // Set to station mode.
         sendCommand("AT+CWMODE=1", "OK")

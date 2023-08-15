@@ -19,13 +19,13 @@ namespace esp8266 {
 
 
     /**
-     * Return true if Blynk data was updated successfully.
+     * Renvoie vrai si les données envoyées au site Blynk ont été prises en compte.
      */
     //% subcategory="Blynk"
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_is_blynk_data_updated
-    //% block="Blynk updated"
+    //% block="[Blynk] Mis à jour"
     export function isBlynkUpdated(): boolean {
         return blynkUpdated
     }
@@ -33,15 +33,15 @@ namespace esp8266 {
 
 
     /**
-     * Read from Blynk and return the pin value as string.
-     * @param authToken Blynk's authentification token.
-     * @param pin Pin we want to read.
+     * Lit la valeur d'un champ enregistré sur Blynk.
+     * @param authToken : clé d'authentification Blynk.
+     * @param pin : champ dont on veut connaître la valeur
      */
     //% subcategory="Blynk"
     //% weight=29
     //% blockGap=8
     //% blockId=esp8266_read_blynk
-    //% block="read Blynk: Token %authToken Pin %pin"
+    //% block="[Blynk] Lire données  Clé:%authToken Champ:%pin"
     export function readBlynk(authToken: string, pin: string): string {
         let value = ""
 
@@ -108,16 +108,16 @@ namespace esp8266 {
 
 
     /**
-     * Write to Blynk.
-     * @param authToken Blynk's authentification token.
-     * @param pin Write to this pin.
-     * @param value Value of the pin.
+     * Enregistre la valeur d'un champ sur Blynk
+     * @param authToken : clé d'authentification Blynk.
+     * @param pin : champ dont on veut connaître la valeur
+     * @param value : Valeur du champ.
      */
     //% subcategory="Blynk"
     //% weight=28
     //% blockGap=8
     //% blockId=esp8266_write_blynk
-    //% block="write Blynk: Token %authToken Pin %pin Value %value"
+    //% block="Ecrire données Blynk  Clé: %authToken Champ: %pin Valeur: %value"
     export function writeBlynk(authToken: string, pin: string, value: string) {
 
         // Reset the upload successful flag.
