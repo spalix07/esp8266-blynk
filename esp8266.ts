@@ -172,6 +172,7 @@ namespace esp8266 {
     /**
      * Renvoie Vrai (True) si le composant ESP8266 est initialisé.
      */
+    //% group=ESP8266
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_is_esp8266_initialized
@@ -188,6 +189,7 @@ namespace esp8266 {
      * @param rx Rx pin of micro:bit. eg: SerialPin.P12
      * @param baudrate UART baudrate. eg: BaudRate.BaudRate115200
      */
+    //% group=ESP8266
     //% weight=29
     //% blockGap=40
     //% blockId=esp8266_init
@@ -220,6 +222,7 @@ namespace esp8266 {
     /**
      * Renvoie Vrai(true) si le composant ESP8266 est connecté en WiFi au réseau.
      */
+    //% group=ESP8266
     //% weight=28
     //% blockGap=8
     //% blockId=esp8266_is_wifi_connected
@@ -245,6 +248,7 @@ namespace esp8266 {
     /**
     * Renvoie l'adresse IP locale du composant ESP8266.
     */
+    //% group=ESP8266
     //% weight=25
     //% blockGap=8
     //% blockId=esp8266_get_local_ip_address
@@ -273,6 +277,7 @@ namespace esp8266 {
      * @param ssid: Nom du point d'accès (SSID)
      * @param password: Clé WiFi
      */
+    //% group=ESP8266
     //% weight=27
     //% blockGap=8
     //% blockId=esp8266_connect_wifi
@@ -283,6 +288,178 @@ namespace esp8266 {
 
         // Connect to WiFi router.
         sendCommand("AT+CWJAP=\"" + ssid + "\",\"" + password + "\"", "OK", 20000)
+    }
+
+
+
+    // Flag to indicate whether the blynk data was updated successfully.
+    let blynkUpdated = false
+
+    // Blynk servers.
+    let blynkServers = ["blynk.cloud", "fra1.blynk.cloud", "lon1.blynk.cloud",
+        "ny3.blynk.cloud", "sgp1.blynk.cloud", "blr1.blynk.cloud"]
+
+
+    /**
+     * Renvoie vrai si les données envoyées au site Blynk ont été prises en compte.
+     */
+    //% group="Blynk"
+    //% weight=30
+    //% blockGap=8
+    //% blockId=esp8266_is_blynk_data_updated
+    //% block="[Blynk] Mis à jour"
+    export function isBlynkUpdated(): boolean {
+        return blynkUpdated
+    }
+
+
+
+    /**
+     * Lit la valeur d'un champ enregistré sur Blynk.
+     * @param authToken : clé d'authentification Blynk
+     * @param pin : champ dont on veut connaître la valeur
+     */
+    //% group="Blynk"
+    //% weight=29
+    //% blockGap=8
+    //% blockId=esp8266_read_blynk
+    //% block="[Blynk] Lire données  Clé:%authToken Champ:%pin"
+    export function readBlynk(authToken: string, pin: string): string {
+        let value = ""
+
+        // Reset the upload successful flag.
+        blynkUpdated = false
+
+        // Make sure the WiFi is connected.
+        if (isWifiConnected() == false) return value
+
+        // Loop through all the blynk servers.
+        for (let i = 0; i < blynkServers.length; i++) {
+            // Connect to Blynk.
+            if (sendCommand("AT+CIPSTART=\"TCP\",\"" + blynkServers[i] + "\",80", "OK", 5000) == true) {
+
+                // Construct the data to send.
+                // http://blynk.cloud/external/api/get?token={token}&{pin}
+                let data = "GET /external/api/get?token=" + authToken + "&" + pin + " HTTP/1.1\r\n"
+
+                // Send the data.
+                sendCommand("AT+CIPSEND=" + (data.length + 2), "OK")
+                sendCommand(data)
+
+                // Verify if "SEND OK" is received.
+                if (getResponse("SEND OK", 5000) != "") {
+
+                    // Make sure Blynk response is 200.
+                    if (getResponse("HTTP/1.1", 5000).includes("200 OK")) {
+
+                        // Get the pin value.
+                        // It should be the last line in the response.
+                        while (true) {
+                            let response = getResponse("", 200)
+                            if (response == "") {
+                                break
+                            } else {
+                                value = response
+                            }
+                        }
+
+                        // Set the upload successful flag.
+                        blynkUpdated = true
+                    }
+                }
+            }
+
+            // Close the connection.
+            sendCommand("AT+CIPCLOSE", "OK", 1000)
+
+            // If blynk is updated successfully.
+            if (blynkUpdated == true) {
+                // Rearrange the Blynk servers array to put the correct server at first location.
+                let server = blynkServers[i]
+                blynkServers.splice(i, 1)
+                blynkServers.unshift(server)
+
+                break
+            }
+
+        }
+
+        return value
+    }
+
+
+
+    /**
+     * Enregistre la valeur d'un champ sur Blynk.
+     * @param authToken : clé d'authentification Blynk
+     * @param pin : champ dont on veut connaître la valeur
+     * @param value : Valeur du champ
+     */
+    //% group="Blynk"
+    //% weight=28
+    //% blockGap=8
+    //% blockId=esp8266_write_blynk
+    //% block="Ecrire données Blynk  Clé:%authToken Champ:%pin Valeur:%value"
+    export function writeBlynk(authToken: string, pin: string, value: string) {
+
+        // Reset the upload successful flag.
+        blynkUpdated = false
+
+        // Make sure the WiFi is connected.
+        if (isWifiConnected() == false) return
+
+        // Loop through all the blynk servers.
+        for (let i = 0; i < blynkServers.length; i++) {
+            // Connect to Blynk.
+            if (sendCommand("AT+CIPSTART=\"TCP\",\"" + blynkServers[i] + "\",80", "OK", 5000) == true) {
+
+                // Construct the data to send.
+                // http://blynk.cloud/external/api/update?token={token}&{pin}={value}
+                let data = "GET /external/api/update?token=" + authToken + "&" + pin + "=" + formatUrl(value) + " HTTP/1.1\r\n"
+
+                // Send the data.
+                sendCommand("AT+CIPSEND=" + (data.length + 2), "OK")
+                sendCommand(data)
+
+                // Verify if "SEND OK" is received.
+                if (getResponse("SEND OK", 5000) != "") {
+
+                    // Make sure Blynk response is 200.
+                    if (getResponse("HTTP/1.1", 5000).includes("200 OK")) {
+
+                        // Get the pin value.
+                        // It should be the last line in the response.
+                        while (true) {
+                            let response = getResponse("", 200)
+                            if (response == "") {
+                                break
+                            } else {
+                                value = response
+                            }
+                        }
+
+                        // Set the upload successful flag.
+                        blynkUpdated = true
+                    }
+                }
+            }
+
+            // Close the connection.
+            sendCommand("AT+CIPCLOSE", "OK", 1000)
+
+            // If blynk is updated successfully.
+            if (blynkUpdated == true) {
+                // Rearrange the Blynk servers array to put the correct server at first location.
+                let server = blynkServers[i]
+                blynkServers.splice(i, 1)
+                blynkServers.unshift(server)
+
+                break
+            }
+
+        }
+
+        return
     }
 
 
