@@ -191,7 +191,7 @@ namespace esp8266 {
     //% weight=29
     //% blockGap=40
     //% blockId=esp8266_init
-    //% block="[ESP8266] Initialiser || Tx %tx Rx %rx | Baudrate %baudrate"
+    //% block="[ESP8266] Initialiser || Tx:%tx Rx:%rx | Baudrate:%baudrate"
     //% tx.defl=SerialPin.P8
     //% rx.defl=SerialPin.P12
     //% baudrate=BaudRate.BaudRate115200
