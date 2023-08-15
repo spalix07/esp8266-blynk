@@ -184,8 +184,8 @@ namespace esp8266 {
 
     /**
      * Initialise le composant ESP8266 pour la connexion sans fil (WIFI).
-     * @param tx Tx pin of micro:bit. eg: SerialPin.P16
-     * @param rx Rx pin of micro:bit. eg: SerialPin.P15
+     * @param tx Tx pin of micro:bit. eg: SerialPin.P8
+     * @param rx Rx pin of micro:bit. eg: SerialPin.P12
      * @param baudrate UART baudrate. eg: BaudRate.BaudRate115200
      */
     //% weight=29
@@ -270,8 +270,8 @@ namespace esp8266 {
 
     /**
      * Connecter le composant ESP8266 à un point d'accès WiFi.
-     * @param ssid: Nom du point d'accès (SSID).
-     * @param password: Clé WiFi.
+     * @param ssid: Nom du point d'accès (SSID)
+     * @param password: Clé WiFi
      */
     //% weight=27
     //% blockGap=8
