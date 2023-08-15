@@ -175,7 +175,7 @@ namespace esp8266 {
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_is_esp8266_initialized
-    //% block="ESP8266 initialisé"
+    //% block="[ESP8266] Composant initialisé"
     export function isESP8266Initialized(): boolean {
         return esp8266Initialized
     }
@@ -223,7 +223,7 @@ namespace esp8266 {
     //% weight=28
     //% blockGap=8
     //% blockId=esp8266_is_wifi_connected
-    //% block="[ESP8266] Connecté en WiFi"
+    //% block="[ESP8266] Connecté au point d'accès WiFi"
     export function isWifiConnected(): boolean {
         // Get the connection status.
         sendCommand("AT+CIPSTATUS")
@@ -248,7 +248,7 @@ namespace esp8266 {
     //% weight=25
     //% blockGap=8
     //% blockId=esp8266_get_local_ip_address
-    //% block="[ESP 8266] Adresse IP locale "
+    //% block="[ESP8266] Adresse IP locale "
     export function getLocalIpAddress(): string {
         // Obtain the Local IP address.
         let ipAddress = ""
@@ -271,7 +271,7 @@ namespace esp8266 {
     /**
      * Connecter le composant ESP8266 à un point d'accès WiFi.
      * @param ssid: Nom du point d'accès (SSID).
-     * @param password; Clé WiFi.
+     * @param password: Clé WiFi.
      */
     //% weight=27
     //% blockGap=8
