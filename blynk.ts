@@ -117,7 +117,7 @@ namespace esp8266 {
     //% weight=28
     //% blockGap=8
     //% blockId=esp8266_write_blynk
-    //% block="Ecrire données Blynk  Clé: %authToken Champ: %pin Valeur: %value"
+    //% block="Ecrire données Blynk  Clé:%authToken Champ:%pin Valeur:%value"
     export function writeBlynk(authToken: string, pin: string, value: string) {
 
         // Reset the upload successful flag.

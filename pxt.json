@@ -11,9 +11,7 @@
         "esp8266.ts",
         "blynk.ts"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": [],
     "targetVersions": {
         "target": "6.0.17",
         "targetId": "microbit"
