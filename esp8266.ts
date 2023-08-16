@@ -193,9 +193,6 @@ namespace esp8266 {
     //% blockId=esp8266_init
     //% block="[ESP8266] Initialiser || Tx: $tx Rx: $rx Baudrate: %baudrate"
     //% expandableArgumentMode="toggle"
-    //% tx.defl=SerialPin.P8
-    //% rx.defl=SerialPin.P12
-    //% baudrate.defl=BaudRate.BaudRate115200
     export function init(tx: SerialPin = SerialPin.P8, rx: SerialPin = SerialPin.P12, baudrate: BaudRate = BaudRate.BaudRate115200) {
   
         // Redirect the serial port.
