@@ -589,7 +589,7 @@ namespace esp8266 {
     //% blockGap=40
     //% blockId=esp8266_init_internet_time
     //% block="[TI] Initialiser avec fuseau(Time zone): %timezone"
-    //% timezone.min=-11 timezone.max=13 timezone.defl=0
+    //% timezone.min=-11 timezone.max=13 timezone.defl=1
     export function initInternetTime(timezone: number) {
         // Reset the flags.
         internetTimeInitialized = false
