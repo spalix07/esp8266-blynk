@@ -461,7 +461,7 @@ namespace esp8266 {
          */
     //% group="Blynk"
     //% weight=27
-    //% blockGap=8
+    //% blockGap=40
     //% blockId=esp8266_is_blynk_data_updated
     //% block="[Blynk] Mis à jour"
     export function isBlynkUpdated(): boolean {
@@ -570,10 +570,10 @@ namespace esp8266 {
      * Renvoie vrai (True) si le temps internet est initialisé.
      */
     //% group="Temps Internet"
-    //% weight=23
+    //% weight=50
     //% blockGap=8
     //% blockId=esp8266_is_internet_time_initialized
-    //% block="[TI] initialisé"
+    //% block="[TI] Initialisé"
     export function isInternetTimeInitialized(): boolean {
         return internetTimeInitialized
     }
@@ -585,7 +585,7 @@ namespace esp8266 {
      * @param timezone Fuseau horaire (Time zone). eg: 0
      */
     //% group="Temps Internet"
-    //% weight=22
+    //% weight=49
     //% blockGap=40
     //% blockId=esp8266_init_internet_time
     //% block="[TI] Initialiser avec fuseau(Time zone): %timezone"
@@ -611,7 +611,7 @@ namespace esp8266 {
      * Renvoie vrai (True) si le temps internat a été correctement mis à jour.
      */
     //% group="Temps Internet"
-    //% weight=21
+    //% weight=48
     //% blockGap=8
     //% blockId=esp8266_is_internet_time_updated
     //% block="[TI] Mis à jour"
@@ -625,8 +625,8 @@ namespace esp8266 {
      * Met à jour le temps internet.
      */
     //% group="Temps Internet"
-    //% weight=20
-    //% blockGap=8
+    //% weight=47
+    //% blockGap=40
     //% blockId=esp8266_update_internet_time
     //% block="[TI] Mettre à jour"
     export function updateInternetTime() {
