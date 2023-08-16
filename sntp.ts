@@ -28,7 +28,7 @@ namespace esp8266 {
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_get_year
-    //% block="Année"
+    //% block="[TI] Année"
     export function getYear(): number {
         return year
     }
@@ -40,7 +40,7 @@ namespace esp8266 {
     //% weight=29
     //% blockGap=8
     //% blockId=esp8266_get_month
-    //% block="Mois"
+    //% block="[TI] Mois"
     export function getMonth(): number {
         return month
     }
@@ -52,7 +52,7 @@ namespace esp8266 {
     //% weight=28
     //% blockGap=8
     //% blockId=esp8266_get_day
-    //% block="Jour"
+    //% block="[TI] Jour"
     export function getDay(): number {
         return day
     }
@@ -64,7 +64,7 @@ namespace esp8266 {
     //% weight=27
     //% blockGap=8
     //% blockId=esp8266_get_weekday
-    //% block="Jour de la semaine"
+    //% block="[TI] Jour de la semaine"
     export function getWeekday(): number {
         return weekday
     }
@@ -76,7 +76,7 @@ namespace esp8266 {
     //% weight=26
     //% blockGap=8
     //% blockId=esp8266_get_hour
-    //% block="Heure"
+    //% block="[TI] Heure"
     export function getHour(): number {
         return hour
     }
@@ -88,7 +88,7 @@ namespace esp8266 {
     //% weight=25
     //% blockGap=8
     //% blockId=esp8266_get_minute
-    //% block="Minute"
+    //% block="[TI] Minute"
     export function getMinute(): number {
         return minute
     }
@@ -100,7 +100,7 @@ namespace esp8266 {
     //% weight=24
     //% blockGap=40
     //% blockId=esp8266_get_second
-    //% block="Seconde"
+    //% block="[TI] Seconde"
     export function getSecond(): number {
         return second
     }
@@ -114,7 +114,7 @@ namespace esp8266 {
     //% weight=23
     //% blockGap=8
     //% blockId=esp8266_is_internet_time_initialized
-    //% block="Temps internet initialisé"
+    //% block="[TI] initialisé"
     export function isInternetTimeInitialized(): boolean {
         return internetTimeInitialized
     }
@@ -129,7 +129,7 @@ namespace esp8266 {
     //% weight=22
     //% blockGap=40
     //% blockId=esp8266_init_internet_time
-    //% block="Initialiser temps internet avec fuseau(Time zone) %timezone"
+    //% block="[TI] Initialiser avec fuseau(Time zone): %timezone"
     //% timezone.min=-11 timezone.max=13 timezone.defl=0
     export function initInternetTime(timezone: number) {
         // Reset the flags.
@@ -155,7 +155,7 @@ namespace esp8266 {
     //% weight=21
     //% blockGap=8
     //% blockId=esp8266_is_internet_time_updated
-    //% block="Temps internet mis à jour"
+    //% block="[TI] Mis à jour"
     export function isInternetTimeUpdated(): boolean {
         return internetTimeUpdated
     }
@@ -169,7 +169,7 @@ namespace esp8266 {
     //% weight=20
     //% blockGap=8
     //% blockId=esp8266_update_internet_time
-    //% block="Mise à jour temps internet"
+    //% block="[TI] Mettre à jour"
     export function updateInternetTime() {
         // Reset the flag.
         internetTimeUpdated = false
