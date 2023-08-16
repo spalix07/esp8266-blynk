@@ -22,85 +22,85 @@ namespace esp8266 {
 
 
     /**
-     * Return the year.
+     * Renvoie l'année.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_get_year
-    //% block="year"
+    //% block="Année"
     export function getYear(): number {
         return year
     }
 
     /**
-     * Return the month.
+     * Renvoie le mois.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=29
     //% blockGap=8
     //% blockId=esp8266_get_month
-    //% block="month"
+    //% block="Mois"
     export function getMonth(): number {
         return month
     }
 
     /**
-     * Return the day.
+     * Renvoie le jour.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=28
     //% blockGap=8
     //% blockId=esp8266_get_day
-    //% block="day"
+    //% block="Jour"
     export function getDay(): number {
         return day
     }
 
     /**
-     * Return the day of week.
+     * Renvoie le jour de la semaine.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=27
     //% blockGap=8
     //% blockId=esp8266_get_weekday
-    //% block="day of week"
+    //% block="Jour de la semaine"
     export function getWeekday(): number {
         return weekday
     }
 
     /**
-     * Return the hour.
+     * Renvoie l'heure.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=26
     //% blockGap=8
     //% blockId=esp8266_get_hour
-    //% block="hour"
+    //% block="Heure"
     export function getHour(): number {
         return hour
     }
 
     /**
-     * Return the minute.
+     * Renvoie les minutes.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=25
     //% blockGap=8
     //% blockId=esp8266_get_minute
-    //% block="minute"
+    //% block="Minute"
     export function getMinute(): number {
         return minute
     }
 
     /**
-     * Return the second.
+     * Renvoie les secondes.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=24
     //% blockGap=40
     //% blockId=esp8266_get_second
-    //% block="second"
+    //% block="Secondes"
     export function getSecond(): number {
         return second
     }
@@ -108,13 +108,13 @@ namespace esp8266 {
 
 
     /**
-     * Return true if the internet time is initialzed successfully.
+     * Renvoie vrai (True) si le temps internet est initialisé.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=23
     //% blockGap=8
     //% blockId=esp8266_is_internet_time_initialized
-    //% block="internet time initialized"
+    //% block="Temps internet initialisé"
     export function isInternetTimeInitialized(): boolean {
         return internetTimeInitialized
     }
@@ -122,15 +122,15 @@ namespace esp8266 {
 
 
     /**
-     * Initialize the internet time.
-     * @param timezone Timezone. eg: 8
+     * Initialise le temps internet.
+     * @param timezone Fuseau horaire (Time zone). eg: 0
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=22
     //% blockGap=40
     //% blockId=esp8266_init_internet_time
-    //% block="initialize internet time at timezone %timezone"
-    //% timezone.min=-11 timezone.max=13
+    //% block="Initialiser temps internet avec fuseau(Time zone) %timezone"
+    //% timezone.min=-11 timezone.max=13 timezone.defl=0
     export function initInternetTime(timezone: number) {
         // Reset the flags.
         internetTimeInitialized = false
@@ -149,13 +149,13 @@ namespace esp8266 {
 
 
     /**
-     * Return true if the internet time is updated successfully.
+     * Renvoie vrai (True) si le temps internat a été correctement mis à jour.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=21
     //% blockGap=8
     //% blockId=esp8266_is_internet_time_updated
-    //% block="internet time updated"
+    //% block="Temps internet mis à jour"
     export function isInternetTimeUpdated(): boolean {
         return internetTimeUpdated
     }
@@ -163,14 +163,13 @@ namespace esp8266 {
 
 
     /**
-     * Update the internet time.
-     * @param timezone Timezone. eg: 8
+     * Met à jour le temps internet.
      */
-    //% subcategory="Internet Time"
+    //% subcategory="Temps Internet"
     //% weight=20
     //% blockGap=8
     //% blockId=esp8266_update_internet_time
-    //% block="update internet time"
+    //% block="Mise à jour temps internet"
     export function updateInternetTime() {
         // Reset the flag.
         internetTimeUpdated = false
