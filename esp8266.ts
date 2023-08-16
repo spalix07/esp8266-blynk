@@ -172,7 +172,7 @@ namespace esp8266 {
      */
     //% group=ESP8266
     //% weight=29
-    //% blockGap=8
+    //% blockGap=40
     //% blockId=esp8266_is_esp8266_initialized
     //% block="[ESP8266] Composant initialisé"
     export function isESP8266Initialized(): boolean {
@@ -191,10 +191,13 @@ namespace esp8266 {
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_init
-    //% block="[ESP8266] Initialiser || Tx: $tx Rx: $rx Baudrate: %baudrate"
+    //% block="[ESP8266] Initialiser || Tx: $tx  Rx: $rx  Baudrate: $baudrate"
     //% expandableArgumentMode="toggle"
-    export function init(tx: SerialPin = SerialPin.P8, rx: SerialPin = SerialPin.P12, baudrate: BaudRate = BaudRate.BaudRate115200) {
-  
+    //% tx.defl=SerialPin.P8
+    //% rx.defl=SerialPin.P12
+    //% baudrate.defl=BaudRate.BaudRate115200
+    export function init(tx: SerialPin=SerialPin.P8, rx: SerialPin=SerialPin.P12, baudrate: BaudRate=BaudRate.BaudRate115200):void {
+       
         // Redirect the serial port.
         serial.redirect(tx, rx, baudrate)
         serial.setTxBufferSize(128)
@@ -224,7 +227,7 @@ namespace esp8266 {
     */
     //% group=ESP8266
     //% weight=25
-    //% blockGap=8
+    //% blockGap=40
     //% blockId=esp8266_get_local_ip_address
     //% block="[ESP8266] Adresse IP locale "
     export function getLocalIpAddress(): string {
@@ -253,7 +256,7 @@ namespace esp8266 {
      */
     //% group=ESP8266
     //% weight=28
-    //% blockGap=40
+    //% blockGap=8
     //% blockId=esp8266_connect_wifi
     //% block="[ESP8266] Connecter au point d'accès WiFi  Nom(SSID):%ssid Clé:%password"
     export function connectWiFi(ssid: string, password: string) {
