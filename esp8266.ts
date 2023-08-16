@@ -17,12 +17,7 @@ namespace esp8266 {
     // Buffer for data received from UART.
     let rxData = ""
 
-    let pinTx: SerialPin
-    let pinRx: SerialPin
-    let bdr: BaudRate
-
-
-    /**
+      /**
      * Send AT command and wait for response.
      * Return true if expected response is received.
      * @param command The AT command without the CRLF.
@@ -196,20 +191,15 @@ namespace esp8266 {
     //% weight=30
     //% blockGap=8
     //% blockId=esp8266_init
-    //% block="[ESP8266] Initialiser | Tx: $tx Rx: $rx Baudrate: $baudrate"
+    //% block="[ESP8266] Initialiser || Tx: $tx Rx: $rx Baudrate: %baudrate"
     //% expandableArgumentMode="toggle"
     //% tx.defl=SerialPin.P8
     //% rx.defl=SerialPin.P12
-    //% baudrate=BaudRate.BaudRate115200
-    export function init(tx?: SerialPin, rx?: SerialPin, baudrate?: BaudRate) {
-
-        pinTx = tx
-        pinRx = rx
-        bdr = baudrate
-
+    //% baudrate.defl=BaudRate.BaudRate115200
+    export function init(tx: SerialPin = SerialPin.P8, rx: SerialPin = SerialPin.P12, baudrate: BaudRate = BaudRate.BaudRate115200) {
+  
         // Redirect the serial port.
-        // serial.redirect(tx, rx, baudrate)
-        serial.redirect(pinTx, pinRx, bdr)
+        serial.redirect(tx, rx, baudrate)
         serial.setTxBufferSize(128)
         serial.setRxBufferSize(128)
 
