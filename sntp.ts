@@ -100,7 +100,7 @@ namespace esp8266 {
     //% weight=24
     //% blockGap=40
     //% blockId=esp8266_get_second
-    //% block="Secondes"
+    //% block="Seconde"
     export function getSecond(): number {
         return second
     }
